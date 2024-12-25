@@ -1,26 +1,40 @@
 {
-    "manifest_version": 3,
-    "name": "Force White Background",
-    "version": "1.0",
-    "description": "Forces all websites to have a white background and black text.",
-    "permissions": [],
-    "background": {
-      "service_worker": "background.js"
+  "manifest_version": 3,
+  "name": "Force White Background",
+  "version": "1.0",
+  "description": "Forces all websites to have a white background and black text.",
+  "permissions": [],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://obsproject.com/*"
+      ],
+      "css": [
+        "styles_color.css"
+      ]
     },
-    "content_scripts": [
-      {
-        "matches": ["https://obsproject.com/*"],
-        "css": ["styles_color.css"]
-      },
-      {
-        "matches": ["<all_urls>"],
-        "exclude_matches": ["https://*.bilibili.com/*"],
-        "css": ["styles_font.css"]
-      },
-      {
-        "matches": ["https://*.feishu.cn/docx/*"],
-        "css": ["styles_font_feishu_docx.css"]
-      }
-    ]
-  }
-  
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "exclude_matches": [
+        "https://*.bilibili.com/*",
+        "https://www.zhihu.com/*"
+      ],
+      "css": [
+        "styles_font.css"
+      ]
+    },
+    {
+      "matches": [
+        "https://*.feishu.cn/docx/*"
+      ],
+      "css": [
+        "styles_font_feishu_docx.css"
+      ]
+    }
+  ]
+}
